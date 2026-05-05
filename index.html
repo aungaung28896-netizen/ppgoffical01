@@ -2,8 +2,13 @@
 <html lang="my">
 <head>
     <meta charset="UTF-8">
+    <!-- APK နှင့် Browser များ Cache မသိမ်းစေရန် အောက်ပါ ၃ ကြောင်း ထည့်ထားသည် -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPGOfficial - Instant Reset</title>
+    <title>PPGOfficial - High Quality</title>
 
     <style>
         :root {
@@ -43,7 +48,6 @@
             max-width: 450px; margin: 20px auto; position: relative; display: flex; align-items: center; gap: 10px; padding: 0 15px;
         }
         
-        /* Search Box */
         .search-box { 
             flex-grow: 1; padding: 12px 20px; border-radius: 25px; 
             border: 1px solid #333; background-color: #1a1a1a; color: white; 
@@ -80,7 +84,6 @@
         }
         .movie-grid.collapsed { max-height: 380px; }
 
-        /* Mouse Hover Effect */
         .movie-card { 
             background-color: var(--card-bg); border-radius: 12px; overflow: hidden; 
             border: 1px solid #30363d; display: flex; flex-direction: column;
@@ -92,8 +95,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 15px var(--accent-glow); 
         }
         .movie-card img { width: 100%; height: 230px; object-fit: cover; transition: 0.4s; }
-        .movie-card:hover img { filter: brightness(1.1); }
-
         .movie-info { padding: 12px; text-align: center; flex-grow: 1; }
         .movie-title { font-size: 0.9em; margin-bottom: 12px; height: 2.4em; overflow: hidden; color: #fff; }
 
@@ -136,7 +137,6 @@
 
 <div class="search-container">
     <div class="search-wrapper">
-        <!-- oninput ကို သုံးပြီး စာသားဖြတ်တာနဲ့ ချက်ချင်း စစ်ဆေးခိုင်းထားပါတယ် -->
         <input type="text" id="searchInput" class="search-box" 
                oninput="checkEmptySearch(this.value)"
                onkeypress="if(event.keyCode == 13) handleSearch()" 
@@ -150,6 +150,7 @@
 <div class="container">
     <div id="no-results">🔍 ရှာမတွေ့ပါ၊ စာလုံးပေါင်း ပြန်စစ်ပေးပါ။</div>
     
+    <!-- မြန်မာ -->
     <div class="category-section" id="sec-myanmar">
         <h2 id="myanmar" class="category-title">မြန်မာဇာတ်ကားများ</h2>
         <div class="movie-grid collapsed" id="grid-myanmar">
@@ -158,6 +159,7 @@
         <div class="toggle-container"><button class="toggle-btn" onclick="toggleGrid('grid-myanmar', this)">></button></div>
     </div>
 
+    <!-- ဂျပန် -->
     <div class="category-section" id="sec-japan">
         <h2 id="japan" class="category-title">ဂျပန်ဇာတ်ကားများ</h2>
         <div class="movie-grid collapsed" id="grid-japan">
@@ -171,6 +173,7 @@
         <div class="toggle-container"><button class="toggle-btn" onclick="toggleGrid('grid-japan', this)">></button></div>
     </div>
 
+    <!-- တရုတ် -->
     <div class="category-section" id="sec-china">
         <h2 id="china" class="category-title">တရုတ်ဇာတ်ကားများ</h2>
         <div class="movie-grid collapsed" id="grid-china">
@@ -179,6 +182,7 @@
         <div class="toggle-container"><button class="toggle-btn" onclick="toggleGrid('grid-china', this)">></button></div>
     </div>
 
+    <!-- နိုင်ငံခြား -->
     <div class="category-section" id="sec-intl">
         <h2 id="international" class="category-title">နိုင်ငံခြားဇာတ်ကားများ</h2>
         <div class="movie-grid collapsed" id="grid-intl">
@@ -212,10 +216,9 @@
         }
     }
 
-    // စာသားဖြတ်လိုက်တာနဲ့ ချက်ချင်းစစ်ဆေးပေးမယ့် Function
     function checkEmptySearch(val) {
         if (val.trim() === "") {
-            performSearch(""); // စာသားမရှိရင် အကုန်ပြန်ပြမယ်
+            performSearch(""); 
         }
     }
 
